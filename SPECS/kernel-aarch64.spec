@@ -782,8 +782,8 @@ BuildKernel() {
     echo USING ARCH=$Arch
 
     %{make} -s ARCH=$Arch oldnoconfig >/dev/null
-    %{make} -s ARCH=$Arch V=1 %{?_smp_mflags} $MakeTarget %{?sparse_mflags}
     %{make} -s ARCH=$Arch V=1 %{?_smp_mflags} modules %{?sparse_mflags} || exit 1
+    %{make} -s ARCH=$Arch V=1 %{?_smp_mflags} $MakeTarget %{?sparse_mflags}
 
     # from f20 kernel.spec for aarch64; build dtb for now...
 %ifarch aarch64
