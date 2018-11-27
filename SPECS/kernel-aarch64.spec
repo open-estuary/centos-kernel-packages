@@ -1000,6 +1000,7 @@ BuildKernel() {
 
     # prune junk from kernel-devel
     find $RPM_BUILD_ROOT/usr/src/kernels -name ".*.cmd" -exec rm -f {} \;
+    find %{_builddir} -name module.lds | grep arm64 | xargs -i cp -f {} $RPM_BUILD_ROOT/usr/src/kernels/$KernelVer/arch/arm64
 }
 
 ###
